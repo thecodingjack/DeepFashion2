@@ -1,0 +1,109 @@
+item {
+  id: 1
+  name: 't-shirt'
+}
+item {
+  id: 2
+  name: 'plaid-shirt'
+}
+item {
+  id: 3
+  name: 'dress-shirt'
+}
+item {
+  id: 4
+  name: 'polo-shirt'
+}
+item {
+  id: 5
+  name: 'hoodie'
+}
+item {
+  id: 6
+  name: 'sweater'
+}
+item {
+  id: 7
+  name: 'cardigan'
+}
+item {
+  id: 8
+  name: 'blouse'
+}
+item {
+  id: 9
+  name: 'top'
+}
+item {
+  id: 10
+  name: 'dress'
+}
+item {
+  id: 11
+  name: 'jeans'
+}
+item {
+  id: 12
+  name: 'pants'
+}
+item {
+  id: 13
+  name: 'sweatpants'
+}
+item {
+  id: 14
+  name: 'shorts'
+}
+item {
+  id: 15
+  name: 'skirt'
+}
+item {
+  id: 16
+  name: 'dress-pants'
+}
+item {
+  id: 17
+  name: 'leggings'
+}
+item {
+  id: 18
+  name: 'bomber-jacket'
+}
+item {
+  id: 19
+  name: 'midweight-jacket'
+}
+item {
+  id: 20
+  name: 'denim-jacket'
+}
+item {
+  id: 21
+  name: 'leather-jacket'
+}
+item {
+  id: 22
+  name: 'parka'
+}
+item {
+  id: 23
+  name: 'puffer'
+}
+item {
+  id: 24
+  name: 'vest'
+}
+item {
+  id: 25
+  name: 'coat'
+}
+item {
+  id: 26
+  name: 'suit-jacket'
+}
+item {
+  id: 27
+  name: 'suit-vest'
+}
+

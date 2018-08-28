@@ -1,0 +1,12 @@
+<html>
+    <head>
+        <title>InceptionV3-FashionMod</title>
+    </head>
+    <body>
+        <h1>Welcome to my InceptionV3 App! </h1><br><br><br><br>
+        <form id="uploadbanner" enctype="multipart/form-data" method="post" action="{{url_for('send')}}">
+          <input id="fileupload" name="image" type="file" />
+          <input type="submit" value="submit" id="submit" />
+       </form>
+    </body>
+</html>
