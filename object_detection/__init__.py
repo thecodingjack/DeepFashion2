@@ -33,8 +33,8 @@ import json
 import time
 sys.path.append("..")
 from object_detection.utils import ops as utils_ops
-from object_detection.utils import label_map_util
-from object_detection.utils import visualization_utils as vis_util
+# from object_detection.utils import label_map_util
+# from object_detection.utils import visualization_utils as vis_util
 
 UPLOAD_FOLDER = '/uploads'
 PATH_TO_FROZEN_GRAPH = '/Users/tzekeonglim/tensorflow-for-poets-2/DeepFashionV2.0/training/fine_tuned_model/frozen_inference_graph.pb'
@@ -49,9 +49,9 @@ with detection_graph.as_default():
     od_graph_def.ParseFromString(serialized_graph)
     tf.import_graph_def(od_graph_def, name='')
 
-label_map = label_map_util.load_labelmap(PATH_TO_LABELS)
-categories = label_map_util.convert_label_map_to_categories(label_map, max_num_classes=NUM_CLASSES, use_display_name=True)
-category_index = label_map_util.create_category_index(categories)
+# label_map = label_map_util.load_labelmap(PATH_TO_LABELS)
+# categories = label_map_util.convert_label_map_to_categories(label_map, max_num_classes=NUM_CLASSES, use_display_name=True)
+# category_index = label_map_util.create_category_index(categories)
 
 def load_image_into_numpy_array(image):
   (im_width, im_height) = image.size
@@ -79,7 +79,6 @@ def run_inference_for_single_image(image, graph):
         if tensor_name in all_tensor_names:
           tensor_dict[key] = tf.get_default_graph().get_tensor_by_name(
               tensor_name)
-          print(tensor_dict[key])
       if 'detection_masks' in tensor_dict:
         # The following processing is only for single image
         detection_boxes = tf.squeeze(tensor_dict['detection_boxes'], [0])
@@ -143,18 +142,19 @@ def send():
   image_np = load_image_into_numpy_array(image)
   output_dict = run_inference_for_single_image(image_np, detection_graph)
   print(output_dict)
-  vis_util.visualize_boxes_and_labels_on_image_array(
-        image_np,
-        output_dict['detection_boxes'],
-        output_dict['detection_classes'],
-        output_dict['detection_scores'],
-        category_index,
-        instance_masks=output_dict.get('detection_masks'),
-        use_normalized_coordinates=True,
-        line_thickness=8)
-  img = Image.fromarray(image_np.astype('uint8'), 'RGB')
-  img.save('./object_detection/output.jpg')
-  return send_file('output.jpg', mimetype='image/gif')
+  return output_dict
+#   vis_util.visualize_boxes_and_labels_on_image_array(
+#         image_np,
+#         output_dict['detection_boxes'],
+#         output_dict['detection_classes'],
+#         output_dict['detection_scores'],
+#         category_index,
+#         instance_masks=output_dict.get('detection_masks'),
+#         use_normalized_coordinates=True,
+#         line_thickness=8)
+#   img = Image.fromarray(image_np.astype('uint8'), 'RGB')
+#   img.save('./object_detection/output.jpg')
+#   return send_file('output.jpg', mimetype='image/gif')
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", debug=True)
