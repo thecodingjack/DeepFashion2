@@ -118,21 +118,13 @@ def send():
   detection_graph = tf.Graph()
   with detection_graph.as_default():
     od_graph_def = tf.GraphDef()
-      with tf.gfile.GFile(PATH_TO_FROZEN_GRAPH, 'rb') as fid:
-        serialized_graph = fid.read()
-        od_graph_def.ParseFromString(serialized_graph)
-        tf.import_graph_def(od_graph_def, name='')
-#   arr = json.loads(request.data)['image']['data']['data']
-#   filename = json.loads(request.data)['image']['name']
-#   f = open(os.path.join('./uploads',filename), 'wb')
-#   f.write(bytearray(arr))
-#   f.close()
-
-#   file_name = os.path.join('./uploads',filename)
+    with tf.gfile.GFile(PATH_TO_FROZEN_GRAPH, 'rb') as fid:
+      serialized_graph = fid.read()
+      od_graph_def.ParseFromString(serialized_graph)
+      tf.import_graph_def(od_graph_def, name='')
   image = request.files['image']
   filename = secure_filename(image.filename)
   image.save(os.path.join('./uploads', filename))
-#   image_path = TEST_IMAGE_PATHS[0]
   image_path = os.path.join('./uploads',filename)
   print(image_path)
   image = Image.open(image_path)
